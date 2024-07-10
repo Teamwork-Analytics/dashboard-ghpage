@@ -3828,12 +3828,436 @@ const getENAdata = async (body) => {
   const { simulationId, startTime, endTime } = body;
 
   // Hard coded data for session 350
-  const allResponse = `{"data":{"acknowledging":{"acknowledging":0,"escalation":9,"questioning":136,"task allocation":122},"escalation":{"acknowledging":9,"escalation":0,"questioning":4,"task allocation":9},"questioning":{"acknowledging":136,"escalation":4,"questioning":0,"task allocation":84},"task allocation":{"acknowledging":122,"escalation":9,"questioning":84,"task allocation":0}},"status":200,"statusText":"OK","headers":{"content-length":"389","content-type":"application/json"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{"FormData":null},"headers":{"Access-Control-Allow-Origin":"*"},"baseURL":"http://localhost:5003","method":"get","url":"/get_ena_data?sessionId=350&start=0&end=1196"},"request":{}}`;
-  const scnStartedResponse = `{"data":{"acknowledging":{"acknowledging":0,"escalation":0,"questioning":0,"task allocation":0},"escalation":{"acknowledging":0,"escalation":0,"questioning":0,"task allocation":0},"questioning":{"acknowledging":0,"escalation":0,"questioning":0,"task allocation":0},"task allocation":{"acknowledging":0,"escalation":0,"questioning":0,"task allocation":0}},"status":200,"statusText":"OK","headers":{"content-length":"379","content-type":"application/json"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{"FormData":null},"headers":{"Access-Control-Allow-Origin":"*"},"baseURL":"http://localhost:5003","method":"get","url":"/get_ena_data?sessionId=350&start=2&end=109"},"request":{}}`;
-  const handoverResponse = `{"data":{"acknowledging":{"acknowledging":0,"escalation":3,"questioning":15,"task allocation":15},"escalation":{"acknowledging":3,"escalation":0,"questioning":3,"task allocation":3},"questioning":{"acknowledging":15,"escalation":3,"questioning":0,"task allocation":15},"task allocation":{"acknowledging":15,"escalation":3,"questioning":15,"task allocation":0}},"status":200,"statusText":"OK","headers":{"content-length":"385","content-type":"application/json"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{"FormData":null},"headers":{"Access-Control-Allow-Origin":"*"},"baseURL":"http://localhost:5003","method":"get","url":"/get_ena_data?sessionId=350&start=109&end=293"},"request":{}}`;
-  const secondaryResponse = `{"data":{"acknowledging":{"acknowledging":0,"escalation":6,"questioning":31,"task allocation":33},"escalation":{"acknowledging":6,"escalation":0,"questioning":1,"task allocation":6},"questioning":{"acknowledging":31,"escalation":1,"questioning":0,"task allocation":20},"task allocation":{"acknowledging":33,"escalation":6,"questioning":20,"task allocation":0}},"status":200,"statusText":"OK","headers":{"content-length":"385","content-type":"application/json"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{"FormData":null},"headers":{"Access-Control-Allow-Origin":"*"},"baseURL":"http://localhost:5003","method":"get","url":"/get_ena_data?sessionId=350&start=293&end=600"},"request":{}}`;
-  const doctorResponse = `{"data":{"acknowledging":{"acknowledging":0,"escalation":0,"questioning":90,"task allocation":74},"escalation":{"acknowledging":0,"escalation":0,"questioning":0,"task allocation":0},"questioning":{"acknowledging":90,"escalation":0,"questioning":0,"task allocation":49},"task allocation":{"acknowledging":74,"escalation":0,"questioning":49,"task allocation":0}},"status":200,"statusText":"OK","headers":{"content-length":"385","content-type":"application/json"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{"FormData":null},"headers":{"Access-Control-Allow-Origin":"*"},"baseURL":"http://localhost:5003","method":"get","url":"/get_ena_data?sessionId=350&start=600&end=1196"},"request":{}}`;
-
+  const allResponse = `{
+    "data": {
+        "acknowledging": {
+            "acknowledging": 0,
+            "call-out": 167,
+            "escalation": 9,
+            "handover": 49,
+            "questioning": 136,
+            "task allocation": 122
+        },
+        "call-out": {
+            "acknowledging": 167,
+            "call-out": 0,
+            "escalation": 9,
+            "handover": 47,
+            "questioning": 112,
+            "task allocation": 103
+        },
+        "escalation": {
+            "acknowledging": 9,
+            "call-out": 9,
+            "escalation": 0,
+            "handover": 4,
+            "questioning": 4,
+            "task allocation": 9
+        },
+        "handover": {
+            "acknowledging": 49,
+            "call-out": 47,
+            "escalation": 4,
+            "handover": 0,
+            "questioning": 30,
+            "task allocation": 40
+        },
+        "questioning": {
+            "acknowledging": 136,
+            "call-out": 112,
+            "escalation": 4,
+            "handover": 30,
+            "questioning": 0,
+            "task allocation": 84
+        },
+        "task allocation": {
+            "acknowledging": 122,
+            "call-out": 103,
+            "escalation": 9,
+            "handover": 40,
+            "questioning": 84,
+            "task allocation": 0
+        }
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "content-length": "769",
+        "content-type": "application/json"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {
+            "FormData": null
+        },
+        "headers": {
+            "Access-Control-Allow-Origin": "http://localhost"
+        },
+        "baseURL": "http://localhost:5003",
+        "method": "get",
+        "url": "/get_ena_data?sessionId=350&start=0&end=1196"
+    },
+    "request": {}
+}`;
+  const scnStartedResponse = `{
+    "data": {
+        "acknowledging": {
+            "acknowledging": 0,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 0
+        },
+        "call-out": {
+            "acknowledging": 0,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 0
+        },
+        "escalation": {
+            "acknowledging": 0,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 0
+        },
+        "handover": {
+            "acknowledging": 0,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 0
+        },
+        "questioning": {
+            "acknowledging": 0,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 0
+        },
+        "task allocation": {
+            "acknowledging": 0,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 0
+        }
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "content-length": "739",
+        "content-type": "application/json"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {
+            "FormData": null
+        },
+        "headers": {
+            "Access-Control-Allow-Origin": "http://localhost"
+        },
+        "baseURL": "http://localhost:5003",
+        "method": "get",
+        "url": "/get_ena_data?sessionId=350&start=2&end=109"
+    },
+    "request": {}
+}`;
+  const handoverResponse = `{
+    "data": {
+        "acknowledging": {
+            "acknowledging": 0,
+            "call-out": 14,
+            "escalation": 3,
+            "handover": 6,
+            "questioning": 15,
+            "task allocation": 15
+        },
+        "call-out": {
+            "acknowledging": 14,
+            "call-out": 0,
+            "escalation": 3,
+            "handover": 6,
+            "questioning": 14,
+            "task allocation": 14
+        },
+        "escalation": {
+            "acknowledging": 3,
+            "call-out": 3,
+            "escalation": 0,
+            "handover": 3,
+            "questioning": 3,
+            "task allocation": 3
+        },
+        "handover": {
+            "acknowledging": 6,
+            "call-out": 6,
+            "escalation": 3,
+            "handover": 0,
+            "questioning": 6,
+            "task allocation": 6
+        },
+        "questioning": {
+            "acknowledging": 15,
+            "call-out": 14,
+            "escalation": 3,
+            "handover": 6,
+            "questioning": 0,
+            "task allocation": 15
+        },
+        "task allocation": {
+            "acknowledging": 15,
+            "call-out": 14,
+            "escalation": 3,
+            "handover": 6,
+            "questioning": 15,
+            "task allocation": 0
+        }
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "content-length": "751",
+        "content-type": "application/json"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {
+            "FormData": null
+        },
+        "headers": {
+            "Access-Control-Allow-Origin": "http://localhost"
+        },
+        "baseURL": "http://localhost:5003",
+        "method": "get",
+        "url": "/get_ena_data?sessionId=350&start=109&end=293"
+    },
+    "request": {}
+}`;
+  const secondaryResponse = `{
+    "data": {
+        "acknowledging": {
+            "acknowledging": 0,
+            "call-out": 41,
+            "escalation": 6,
+            "handover": 1,
+            "questioning": 31,
+            "task allocation": 33
+        },
+        "call-out": {
+            "acknowledging": 41,
+            "call-out": 0,
+            "escalation": 6,
+            "handover": 1,
+            "questioning": 21,
+            "task allocation": 26
+        },
+        "escalation": {
+            "acknowledging": 6,
+            "call-out": 6,
+            "escalation": 0,
+            "handover": 1,
+            "questioning": 1,
+            "task allocation": 6
+        },
+        "handover": {
+            "acknowledging": 1,
+            "call-out": 1,
+            "escalation": 1,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 1
+        },
+        "questioning": {
+            "acknowledging": 31,
+            "call-out": 21,
+            "escalation": 1,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 20
+        },
+        "task allocation": {
+            "acknowledging": 33,
+            "call-out": 26,
+            "escalation": 6,
+            "handover": 1,
+            "questioning": 20,
+            "task allocation": 0
+        }
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "content-length": "751",
+        "content-type": "application/json"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {
+            "FormData": null
+        },
+        "headers": {
+            "Access-Control-Allow-Origin": "http://localhost"
+        },
+        "baseURL": "http://localhost:5003",
+        "method": "get",
+        "url": "/get_ena_data?sessionId=350&start=293&end=600"
+    },
+    "request": {}
+}`;
+  const doctorResponse = `{
+    "data": {
+        "acknowledging": {
+            "acknowledging": 0,
+            "call-out": 112,
+            "escalation": 0,
+            "handover": 41,
+            "questioning": 90,
+            "task allocation": 74
+        },
+        "call-out": {
+            "acknowledging": 112,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 40,
+            "questioning": 77,
+            "task allocation": 63
+        },
+        "escalation": {
+            "acknowledging": 0,
+            "call-out": 0,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 0,
+            "task allocation": 0
+        },
+        "handover": {
+            "acknowledging": 41,
+            "call-out": 40,
+            "escalation": 0,
+            "handover": 0,
+            "questioning": 24,
+            "task allocation": 33
+        },
+        "questioning": {
+            "acknowledging": 90,
+            "call-out": 77,
+            "escalation": 0,
+            "handover": 24,
+            "questioning": 0,
+            "task allocation": 49
+        },
+        "task allocation": {
+            "acknowledging": 74,
+            "call-out": 63,
+            "escalation": 0,
+            "handover": 33,
+            "questioning": 49,
+            "task allocation": 0
+        }
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "content-length": "761",
+        "content-type": "application/json"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {
+            "FormData": null
+        },
+        "headers": {
+            "Access-Control-Allow-Origin": "http://localhost"
+        },
+        "baseURL": "http://localhost:5003",
+        "method": "get",
+        "url": "/get_ena_data?sessionId=350&start=600&end=1196"
+    },
+    "request": {}
+}`;
   let resResponse; // Declare resResponse outside the switch
 
   // Create a condition key for switch
